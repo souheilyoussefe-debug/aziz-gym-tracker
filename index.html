@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101114">
+  <title>FORGE — Aziz Gym Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">F</span><span>FORGE<span class="brand-sub">TRAINING CLUB</span></span></a>
+      <div class="side-label">MENU</div>
+      <nav>
+        <button class="nav-link active" data-view="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-link" data-view="workout"><span>◈</span> My Program</button>
+        <button class="nav-link" data-view="history"><span>◷</span> History</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-profile"><div class="avatar">A</div><div><strong>My Space</strong><small>Personal Mode</small></div></div>
+        <p class="side-note">YOUR GOALS. YOUR PACE.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow" id="today-label">YOUR FITNESS SPACE</div><h1 id="page-title">Dashboard</h1></div>
+        <button class="primary-btn" id="start-workout">＋ New Workout</button>
+      </header>
+
+      <section class="view active" id="dashboard-view">
+        <div class="hero">
+          <div class="hero-copy"><span class="pill"><i></i> STAY CONSISTENT</span><h2>Every workout<br>makes you stronger.</h2><p>Build your habits, track your performance, and move forward at your own pace.</p><button class="light-btn" id="hero-start">Start Workout <b>↗</b></button></div>
+          <div class="hero-art"><div class="hero-ring"></div><div class="hero-number">01<span> / DAY</span></div><div class="hero-caption">FOCUS<br><b>PROGRESSION</b></div></div>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">OVERVIEW</span><h3>Your Progress</h3></div><span class="muted">Your personal statistics</span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>WORKOUTS COMPLETED</span><span class="stat-icon">✓</span></div><strong id="stat-sessions">0</strong><small>Since the beginning</small></article>
+          <article class="stat-card"><div class="stat-top"><span>TOTAL VOLUME</span><span class="stat-icon">↗</span></div><strong id="stat-volume">0 <em>kg</em></strong><small>Weight × reps</small></article>
+          <article class="stat-card"><div class="stat-top"><span>CURRENT STREAK</span><span class="stat-icon">✦</span></div><strong id="stat-streak">0 <em>days</em></strong><small>Keep the rhythm</small></article>
+        </div>
+        <div class="dashboard-bottom">
+          <section class="panel"><div class="panel-heading"><div><span class="eyebrow">UPCOMING</span><h3>Weekly Schedule</h3></div><button class="text-btn" data-goto="workout">View all ↗</button></div><div id="week-preview" class="week-list"></div></section>
+          <section class="panel quote-panel"><span class="eyebrow">DAILY REMINDER</span><div class="quote-mark">“</div><h3>Consistency<br>beats occasional<br>intensity.</h3><p>One step at a time. Respect your rest and listen to your body.</p><div class="quote-line"></div></section>
+        </div>
+      </section>
+
+      <section class="view" id="workout-view">
+        <div class="section-heading"><div><span class="eyebrow">ORGANIZATION</span><h3>Weekly Program</h3></div><button class="outline-btn" id="add-day">＋ Add a Day</button></div>
+        <div id="program-days" class="program-grid"></div>
+      </section>
+
+      <section class="view" id="history-view">
+        <div class="section-heading"><div><span class="eyebrow">YOUR EFFORTS</span><h3>Workout History</h3></div></div>
+        <div class="panel"><div id="history-list" class="history-list"></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="session-modal">
+    <div class="modal session-modal">
+      <button class="close-btn" data-close>×</button>
+      <span class="eyebrow">WORKOUT MODE</span><h2 id="session-title">Your Workout</h2>
+      <p class="muted" id="session-subtitle">Check off the exercises as you go.</p>
+      <div id="session-exercises" class="session-exercises"></div>
+      <div class="timer-box"><div><span class="eyebrow">REST TIMER</span><strong id="timer-display">01:30</strong></div><div class="timer-controls"><button class="outline-btn" id="timer-minus">−30s</button><button class="primary-btn" id="timer-toggle">Start</button><button class="outline-btn" id="timer-reset">Reset</button></div></div>
+      <button class="primary-btn full-btn" id="finish-session">Finish Workout</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="edit-modal">
+    <div class="modal"><button class="close-btn" data-close>×</button><span class="eyebrow">CUSTOMIZATION</span><h2 id="edit-title">Add an Exercise</h2>
+      <label>Exercise Name<input id="exercise-name" placeholder="Ex. Bench Press"></label>
+      <div class="form-row"><label>Sets<input id="exercise-sets" type="number" min="1" value="3"></label><label>Reps<input id="exercise-reps" type="text" value="10-12"></label><label>Weight (kg)<input id="exercise-weight" type="number" min="0" value="0"></label></div>
+      <button class="primary-btn full-btn" id="save-exercise">Save</button>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
