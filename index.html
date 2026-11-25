@@ -61,24 +61,62 @@
     </main>
   </div>
 
+  <!-- ACTIVE WORKOUT SESSION MODAL -->
   <div class="modal-backdrop" id="session-modal">
     <div class="modal session-modal">
       <button class="close-btn" data-close>×</button>
       <span class="eyebrow">WORKOUT MODE</span><h2 id="session-title">Your Workout</h2>
-      <p class="muted" id="session-subtitle">Check off the exercises as you go.</p>
+      <p class="muted" id="session-subtitle">Check off the exercises as you go, or tap Guide for form & tips.</p>
       <div id="session-exercises" class="session-exercises"></div>
       <div class="timer-box"><div><span class="eyebrow">REST TIMER</span><strong id="timer-display">01:30</strong></div><div class="timer-controls"><button class="outline-btn" id="timer-minus">−30s</button><button class="primary-btn" id="timer-toggle">Start</button><button class="outline-btn" id="timer-reset">Reset</button></div></div>
       <button class="primary-btn full-btn" id="finish-session">Finish Workout</button>
     </div>
   </div>
 
+  <!-- ADD EXERCISE MODAL -->
   <div class="modal-backdrop" id="edit-modal">
-    <div class="modal"><button class="close-btn" data-close>×</button><span class="eyebrow">CUSTOMIZATION</span><h2 id="edit-title">Add an Exercise</h2>
+    <div class="modal">
+      <button class="close-btn" data-close>×</button>
+      <span class="eyebrow">CUSTOMIZATION</span>
+      <h2 id="edit-title">Add an Exercise</h2>
       <label>Exercise Name<input id="exercise-name" placeholder="Ex. Bench Press"></label>
-      <div class="form-row"><label>Sets<input id="exercise-sets" type="number" min="1" value="3"></label><label>Reps<input id="exercise-reps" type="text" value="10-12"></label><label>Weight (kg)<input id="exercise-weight" type="number" min="0" value="0"></label></div>
+      <div class="form-row">
+        <label>Sets<input id="exercise-sets" type="number" min="1" value="3"></label>
+        <label>Reps<input id="exercise-reps" type="text" value="10-12"></label>
+        <label>Weight (kg)<input id="exercise-weight" type="number" min="0" value="0"></label>
+      </div>
+      <label>Purpose & Target Muscles<input id="exercise-purpose" placeholder="Ex. Builds upper chest & front delts"></label>
+      <label>Photo URL (optional)<input id="exercise-image" placeholder="https://..."></label>
+      <label>YouTube Video Link (optional)<input id="exercise-video" placeholder="https://www.youtube.com/watch?v=..."></label>
       <button class="primary-btn full-btn" id="save-exercise">Save</button>
     </div>
   </div>
+
+  <!-- EXERCISE GUIDE MODAL -->
+  <div class="modal-backdrop" id="guide-modal">
+    <div class="modal">
+      <button class="close-btn" data-close-guide>×</button>
+      <span class="eyebrow">EXERCISE GUIDE</span>
+      <h2 id="guide-title">Exercise Name</h2>
+
+      <div class="guide-media">
+        <img id="guide-img" src="" alt="Exercise demonstration">
+      </div>
+
+      <div class="guide-section">
+        <span class="eyebrow">PURPOSE & TARGET MUSCLES</span>
+        <p id="guide-purpose" class="guide-text"></p>
+      </div>
+
+      <div class="guide-section" id="guide-video-wrapper">
+        <span class="eyebrow">HOW TO DO IT (VIDEO)</span>
+        <div class="video-frame">
+          <iframe id="guide-video" src="" title="Exercise Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" id="toast"></div>
 
   <script src="app.js"></script>
