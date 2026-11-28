@@ -12,7 +12,7 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: "DM Sans", sans-serif; }
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 button { cursor: pointer; }
 .app-shell { min-height: 100vh; display: flex; }
 .sidebar { width: 248px; border-right: 1px solid var(--line); padding: 32px 22px; display: flex; flex-direction: column; flex-shrink: 0; }
@@ -126,8 +126,10 @@ button { cursor: pointer; }
 .timer-controls button { padding: 9px 10px; font-size: 10px; }
 .full-btn { width: 100%; margin-top: 12px; }
 label { display: block; font-size: 11px; color: #b9bdc3; margin: 14px 0 0; }
-input { display: block; width: 100%; background: #25282e; border: 1px solid #3b4048; border-radius: 7px; padding: 11px 12px; color: white; margin-top: 6px; outline: none; }
-input:focus { border-color: var(--accent); }
+input, select { display: block; width: 100%; background: #25282e; border: 1px solid #3b4048; border-radius: 7px; padding: 11px 12px; color: white; margin-top: 6px; outline: none; }
+input:focus, select:focus { border-color: var(--accent); }
+select optgroup { background: #191b20; color: var(--accent); font-weight: 700; }
+select option { background: #25282e; color: var(--text); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
 .toast { position: fixed; bottom: 25px; left: 50%; transform: translate(-50%,20px); background: var(--accent); color: #151710; padding: 12px 18px; border-radius: 8px; font-size: 12px; font-weight: 700; opacity: 0; transition: .25s; pointer-events: none; z-index: 20; }
 .toast.show { opacity: 1; transform: translate(-50%,0); }
@@ -139,6 +141,57 @@ input:focus { border-color: var(--accent); }
 .guide-text { font-size: 12.5px; line-height: 1.65; color: var(--text); margin: 6px 0 0; background: var(--panel2); padding: 12px 14px; border-radius: 8px; border-left: 3px solid var(--accent); }
 .video-frame { margin-top: 8px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); background: #000; }
 .video-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* --- AUTHENTICATION SCREEN --- */
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(circle at top right, #23281e, var(--bg) 60%);
+}
+
+.auth-card {
+  width: min(400px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px 28px;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: var(--panel2);
+  padding: 4px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.auth-tab {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  padding: 9px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.auth-tab.active {
+  background: var(--accent);
+  color: #151710;
+}
+
+.auth-error {
+  color: var(--red);
+  font-size: 11px;
+  text-align: center;
+  margin: 14px 0 0;
+  min-height: 16px;
+}
 
 @media(max-width:900px){.sidebar{width:205px}.main{padding:28px 25px}.hero-art{width:210px}.dashboard-bottom{grid-template-columns:1fr}.program-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.app-shell{display:block}.sidebar{width:100%;height:auto;padding:13px 16px;border-right:0;border-bottom:1px solid var(--line);display:block}.brand{font-size:18px}.brand-mark{width:32px;height:32px}.side-label,.sidebar-bottom{display:none}.sidebar nav{display:flex;overflow:auto;margin-top:13px}.nav-link{white-space:nowrap;padding:9px 11px;font-size:10px;gap:7px}.nav-link span{font-size:14px}.main{padding:23px 16px 45px}.topbar h1{font-size:25px}.topbar .primary-btn{padding:10px;font-size:10px}.hero{padding:24px 21px;min-height:250px}.hero-art{position:absolute;right:-85px;opacity:.35}.hero-copy{max-width:100%}.hero h2{font-size:38px}.stats-grid{grid-template-columns:1fr;gap:9px}.stat-card{padding:14px 16px}.stat-card>strong{font-size:28px;margin:7px 0 0}.section-heading{align-items:center}.section-heading h3{font-size:18px}.section-heading>.muted{display:none}.program-grid{grid-template-columns:1fr}.panel{padding:16px}.timer-box{align-items:flex-start;flex-direction:column}.form-row{grid-template-columns:1fr 1fr}.form-row label:last-child{grid-column:1/-1}}
