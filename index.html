@@ -4,14 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#101114">
-  <title>FORGE — Aziz Gym Tracker</title>
+  <title>FORGE — Gym Tracker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app-shell">
+
+  <!-- AUTH SCREEN (LOGIN / SIGN UP) -->
+  <div class="auth-screen" id="auth-screen">
+    <div class="auth-card">
+      <div class="brand" style="justify-content: center; margin-bottom: 24px;">
+        <span class="brand-mark">F</span>
+        <span>FORGE<span class="brand-sub">TRAINING CLUB</span></span>
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" id="tab-login">Log In</button>
+        <button type="button" class="auth-tab" id="tab-signup">Sign Up</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form id="login-form" class="auth-form">
+        <label>Email Address
+          <input type="email" id="login-email" placeholder="you@example.com" required>
+        </label>
+        <label>Password
+          <input type="password" id="login-password" placeholder="••••••••" required>
+        </label>
+        <button type="submit" class="primary-btn full-btn" id="login-submit">Log In</button>
+      </form>
+
+      <!-- SIGNUP FORM -->
+      <form id="signup-form" class="auth-form" style="display: none;">
+        <label>Full Name
+          <input type="text" id="signup-name" placeholder="Aziz Ben Ali" required>
+        </label>
+        <label>Email Address
+          <input type="email" id="signup-email" placeholder="you@example.com" required>
+        </label>
+        <label>Password (min. 6 characters)
+          <input type="password" id="signup-password" minlength="6" placeholder="••••••••" required>
+        </label>
+        <button type="submit" class="primary-btn full-btn" id="signup-submit">Create Account</button>
+      </form>
+
+      <p id="auth-error" class="auth-error"></p>
+    </div>
+  </div>
+
+  <!-- MAIN APPLICATION SHELL -->
+  <div class="app-shell" id="app-shell" style="display: none;">
     <aside class="sidebar">
       <a class="brand" href="#"><span class="brand-mark">F</span><span>FORGE<span class="brand-sub">TRAINING CLUB</span></span></a>
       <div class="side-label">MENU</div>
@@ -21,7 +65,14 @@
         <button class="nav-link" data-view="history"><span>◷</span> History</button>
       </nav>
       <div class="sidebar-bottom">
-        <div class="mini-profile"><div class="avatar">A</div><div><strong>My Space</strong><small>Personal Mode</small></div></div>
+        <div class="mini-profile">
+          <div class="avatar" id="user-avatar">A</div>
+          <div>
+            <strong id="user-display-name">My Space</strong>
+            <small id="user-display-email">Personal Mode</small>
+          </div>
+        </div>
+        <button class="outline-btn full-btn" id="logout-btn" style="margin-top: 14px; padding: 8px;">Log Out</button>
         <p class="side-note">YOUR GOALS. YOUR PACE.</p>
       </div>
     </aside>
@@ -79,6 +130,13 @@
       <button class="close-btn" data-close>×</button>
       <span class="eyebrow">CUSTOMIZATION</span>
       <h2 id="edit-title">Add an Exercise</h2>
+      
+      <label>Choose from Exercise Library
+        <select id="exercise-preset">
+          <option value="">-- Custom Exercise (Type below) --</option>
+        </select>
+      </label>
+
       <label>Exercise Name<input id="exercise-name" placeholder="Ex. Bench Press"></label>
       <div class="form-row">
         <label>Sets<input id="exercise-sets" type="number" min="1" value="3"></label>
